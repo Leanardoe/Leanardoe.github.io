@@ -2,7 +2,11 @@ import fs from 'fs';
 import path from 'path';
 import Handlebars from 'handlebars';
 
-const pages = ['index', 'contact']; // add more as needed
+// ✅ Auto-detect all .hbs files in /pages/
+const pagesDir = './templates/pages';
+const pages = fs.readdirSync(pagesDir)
+  .filter(file => file.endsWith('.hbs'))
+  .map(file => path.parse(file).name);
 
 // Load layout template
 const layoutSource = fs.readFileSync('./templates/layout.hbs', 'utf8');
@@ -20,7 +24,7 @@ fs.readdirSync(partialsDir).forEach(file => {
 Handlebars.registerHelper('year', () => new Date().getFullYear());
 
 for (const page of pages) {
-  const pageSource = fs.readFileSync(`./templates/pages/${page}.hbs`, 'utf8');
+  const pageSource = fs.readFileSync(`${pagesDir}/${page}.hbs`, 'utf8');
   const pageContent = Handlebars.compile(pageSource)();
 
   const finalHtml = layoutTemplate({
@@ -29,9 +33,7 @@ for (const page of pages) {
     year: new Date().getFullYear()
   });
 
-  const outputPath = page === 'index'
-    ? './index.html'                 // output to root
-    : `./dist/${page}.html`;         // others go to dist
-
+  const outputPath = `./${page}.html`; // all pages go in root
+  console.log(`✅ Writing: ${outputPath}`);
   fs.writeFileSync(outputPath, finalHtml);
 }

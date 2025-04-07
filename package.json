@@ -4,16 +4,16 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "clean": "del-cli *.html dist",
     "build:hbs": "node build.js",
-    "build": "npm run build:hbs && vite build",
-    "deploy:user": "npm run build && git add . && git commit -m \"Deploy site\" && git push",
-    
+    "build": "npm run clean && npm run build:hbs && vite build",
+    "dev": "vite",
     "preview": "vite preview",
-    "deploy": "gh-pages -d dist"
+    "deploy:user": "npm run build && git add . && git commit -m \"Deploy site\" && git push"
   },
   "devDependencies": {
     "cpy-cli": "^5.0.0",
+    "del-cli": "^6.0.0",
     "gh-pages": "^6.3.0",
     "rimraf": "^6.0.1",
     "vite": "^6.2.0"
