@@ -2,28 +2,33 @@ import fs from 'fs';
 import path from 'path';
 import Handlebars from 'handlebars';
 
+const pages = ['index', 'contact'];
+//, 'resume', 'portfolio'
+
+// Load layout template
+const layoutSource = fs.readFileSync('./templates/layout.hbs', 'utf8');
+const layoutTemplate = Handlebars.compile(layoutSource);
+
 // Register partials
 const partialsDir = './templates/partials';
 fs.readdirSync(partialsDir).forEach(file => {
-  const partialName = path.parse(file).name;
-  const partialContent = fs.readFileSync(`${partialsDir}/${file}`, 'utf8');
-  Handlebars.registerPartial(partialName, partialContent);
+  const name = path.parse(file).name;
+  const content = fs.readFileSync(`${partialsDir}/${file}`, 'utf8');
+  Handlebars.registerPartial(name, content);
 });
 
-// Add helpers (optional)
+// Register helpers
 Handlebars.registerHelper('year', () => new Date().getFullYear());
 
-// Context shared across pages
-const context = {
-  siteTitle: 'Ryan Lemons | Web Developer'
-};
-
-const pages = ['index', 'contact'];
-//const pages = ['index', 'portfolio', 'resume', 'contact'];
-
 for (const page of pages) {
-  const source = fs.readFileSync(`./templates/${page}.hbs`, 'utf8');
-  const template = Handlebars.compile(source);
-  const result = template(context);
-  fs.writeFileSync(`./${page}.html`, result);
+  const pageSource = fs.readFileSync(`./templates/pages/${page}.hbs`, 'utf8');
+  const pageContent = Handlebars.compile(pageSource)();
+
+  const finalHtml = layoutTemplate({
+    title: `Ryan Lemons | ${page.charAt(0).toUpperCase() + page.slice(1)}`,
+    body: pageContent,
+  });
+
+  const outputPath = `./dist/${page === 'index' ? 'index' : page}.html`;
+  fs.writeFileSync(outputPath, finalHtml);
 }
