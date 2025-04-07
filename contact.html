@@ -79,7 +79,7 @@
     e.preventDefault();
 
     grecaptcha.ready(function() {
-      grecaptcha.execute('your_site_key', {action: 'submit'}).then(function(token) {
+      grecaptcha.execute('6LcvvQwrAAAAALXFvdsKB00QFocDG14qPqeccTg4', {action: 'submit'}).then(function(token) {
         // Inject token into the form
         document.getElementById('g-recaptcha-response').value = token;
 
