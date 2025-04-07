@@ -1,0 +1,26 @@
+{
+  "name": "portfolio-site",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build:hbs": "node build.js",
+    "build": "npm run build:hbs && vite build",
+    "deploy:user": "npm run build && npm run deploy:clean && npm run deploy:copy",
+    "deploy:clean": "rimraf index.html portfolio.html resume.html contact.html assets",
+    "deploy:copy": "cpy dist/**/*.* ./ --flat && cpy dist/assets ./assets --recursive",
+    "preview": "vite preview",
+    "deploy": "gh-pages -d dist"
+  },
+  "devDependencies": {
+    "cpy-cli": "^5.0.0",
+    "gh-pages": "^6.3.0",
+    "rimraf": "^6.0.1",
+    "vite": "^6.2.0"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.5",
+    "handlebars": "^4.7.8"
+  }
+}
