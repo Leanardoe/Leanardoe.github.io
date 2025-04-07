@@ -2,8 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import Handlebars from 'handlebars';
 
-const pages = ['index', 'contact'];
-//, 'resume', 'portfolio'
+const pages = ['index', 'contact']; // add more as needed
 
 // Load layout template
 const layoutSource = fs.readFileSync('./templates/layout.hbs', 'utf8');
@@ -27,8 +26,12 @@ for (const page of pages) {
   const finalHtml = layoutTemplate({
     title: `Ryan Lemons | ${page.charAt(0).toUpperCase() + page.slice(1)}`,
     body: pageContent,
+    year: new Date().getFullYear()
   });
 
-  const outputPath = `./dist/${page === 'index' ? 'index' : page}.html`;
+  const outputPath = page === 'index'
+    ? './index.html'                 // output to root
+    : `./dist/${page}.html`;         // others go to dist
+
   fs.writeFileSync(outputPath, finalHtml);
 }
