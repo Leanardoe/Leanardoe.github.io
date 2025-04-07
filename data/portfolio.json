@@ -1,0 +1,65 @@
+[
+    {
+      "category": "During my time at Morris",
+      "projects": [
+        {
+          "title": "Second Harvest Food Bank",
+          "description": "Redesigned and built the full website for a major regional nonprofit.",
+          "url": "https://secondharvestetn.org",
+          "screenshot": "assets/portfolio/second-harvest.png"
+        },
+        {
+          "title": "River Sports Outfitters",
+          "description": "Full site redesign and implementation for a local outdoor gear retailer.",
+          "url": "https://riversportsoutfitters.com",
+          "screenshot": "assets/portfolio/river-sports.png"
+        }
+      ]
+    },
+    {
+      "category": "Freelance sites",
+      "projects": [
+        {
+          "title": "Scruffy’s Cat Café",
+          "description": "Ongoing site updates and SEO support for a local cat café business.",
+          "url": "https://scruffyscatcafe.com",
+          "screenshot": "assets/portfolio/scruffys.png"
+        },
+        {
+          "title": "Talia & BK Wedding Site",
+          "description": "Custom wedding site for event details, registry, and RSVP handling.",
+          "url": "https://wedding.leodigital.io",
+          "screenshot": "assets/portfolio/talia-bk.png"
+        }
+      ]
+    },
+    {
+      "category": "School projects",
+      "projects": [
+        {
+          "title": ".NET Capstone Project",
+          "description": "Advanced ASP.NET MVC project for student records management, built as a senior capstone.",
+          "url": "https://leodigital.io/capstone",
+          "screenshot": "assets/portfolio/capstone.png"
+        }
+      ]
+    },
+    {
+      "category": "Hobby sites & games",
+      "projects": [
+        {
+          "title": "TV Channel Flipper",
+          "description": "A shader-based PIXI.js game that simulates flipping through surreal TV channels.",
+          "url": "https://leodigital.io/tv-sim",
+          "screenshot": "assets/portfolio/tv-game.png"
+        },
+        {
+          "title": "Zombie Shooter",
+          "description": "Browser game built in PIXI.js following retro arcade mechanics.",
+          "url": "https://leodigital.io/zombie",
+          "screenshot": "assets/portfolio/zombie.png"
+        }
+      ]
+    }
+  ]
+  
