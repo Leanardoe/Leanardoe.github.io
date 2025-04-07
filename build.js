@@ -18,7 +18,7 @@ const context = {
   siteTitle: 'Ryan Lemons | Web Developer'
 };
 
-const pages = ['index'];
+const pages = ['index', 'contact'];
 //const pages = ['index', 'portfolio', 'resume', 'contact'];
 
 for (const page of pages) {
